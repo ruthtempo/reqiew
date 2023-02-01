@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, Container, Flex, Heading } from "@chakra-ui/react";
+import { Filters } from "./Filters";
+import { Menu } from "./Menu";
+import { Results } from "./Results";
+import { ReviewsCard } from "./ReviewsCard";
+import { VersionCard } from "./VersionCard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container h="100vh">
+      <Menu />
+      <Filters />
+      <Heading>Aspect-based Sentiment:BBQ</Heading>
+      <Flex gap={3}>
+        <Box display="flex" flexDirection="column" gap={4}>
+          <ReviewsCard />
+          <VersionCard />
+        </Box>
+        <Results />
+      </Flex>
+    </Container>
   );
 }
 
