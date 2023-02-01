@@ -1,4 +1,13 @@
-import { Card, CardBody, CardHeader, Heading, Text } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Flex,
+  Heading,
+  Icon,
+  Text,
+} from "@chakra-ui/react";
+import { IoDiamond } from "react-icons/io5";
 
 export const VersionCard = () => {
   return (
@@ -10,7 +19,11 @@ export const VersionCard = () => {
         </Text>
       </CardHeader>
       <CardBody>
-        <Heading size="xs"> Edit Subscription</Heading>
+        <Heading size="xs">
+          <Flex alignItems={"center"} gap={3}>
+            Edit Subscription <Icon as={IoDiamond} boxSize={25} />
+          </Flex>
+        </Heading>
       </CardBody>
     </Card>
   );
