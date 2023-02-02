@@ -1,8 +1,8 @@
 import { Box, Container, Flex, Heading } from "@chakra-ui/react";
-import { Filters } from "./Filters";
-import { MenuNav } from "./Menu";
-import { Results } from "./Results";
-import { ReviewsCard } from "./ReviewsCard";
+import { Filters } from "./components/FilterOptions";
+import { MenuNav } from "./components/Menu";
+import { Results } from "./components/Results";
+import { ReviewsCard } from "./components/ReviewsCard";
 import { VersionCard } from "./VersionCard";
 
 function App() {
