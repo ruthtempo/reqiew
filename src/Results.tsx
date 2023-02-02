@@ -54,19 +54,30 @@ const calculateScoreDiff = (score: number, benchmark: number) => {
   return result.toFixed(1);
 };
 
-type Sorted = "ascending" | "descending";
+type Sorted = { sorted: string; reversed: boolean };
 
 export const Results = () => {
-  const [sortedBy, setSortedBy] = useState<Sorted>("descending");
+  const [aspectRating, setAspectRating] = useState(
+    sentimentRating.sort((a, b) => b.score - a.score)
+  );
 
-  const handleSortScores = () => {
-    if (sortedBy === "descending") {
-      sentimentRating.sort((a, b) => a.score - b.score); // lower to higher
-      setSortedBy("ascending");
-    } else {
-      sentimentRating.sort((a, b) => b.score - a.score); //higher to lower
-      setSortedBy("descending");
-    }
+  const [sortedBy, setSortedBy] = useState<Sorted>({
+    sorted: "score",
+    reversed: false,
+  });
+
+  const sortByScore = () => {
+    setSortedBy({ sorted: "score", reversed: !sortedBy.reversed });
+    const aspectRatingCopy = [...aspectRating];
+
+    aspectRatingCopy.sort((aspectA, aspectB) => {
+      if (sortedBy.reversed) {
+        return aspectA.score - aspectB.score;
+      }
+      return aspectB.score - aspectA.score;
+    });
+
+    setAspectRating(aspectRatingCopy);
   };
 
   return (
@@ -79,19 +90,15 @@ export const Results = () => {
               <Th cursor={"pointer"}>
                 Score
                 <Icon
-                  as={
-                    sortedBy === "descending"
-                      ? TriangleDownIcon
-                      : TriangleUpIcon
-                  }
-                  onClick={handleSortScores}
+                  as={sortedBy.reversed ? TriangleDownIcon : TriangleUpIcon}
+                  onClick={sortByScore}
                 />
               </Th>
               <Th>Benchmark</Th>
             </Tr>
           </Thead>
           <Tbody>
-            {sentimentRating.map((element) => (
+            {aspectRating.map((element) => (
               <Tr>
                 <Td>{element.aspect}</Td>
                 <Td>
@@ -104,6 +111,7 @@ export const Results = () => {
                 </Td>
                 <Td>
                   <Flex alignItems={"center"} gap={2}>
+                    <Text fontSize="xs">{element.benchmark} %</Text>
                     <Tag colorScheme={assignProgressColor(element.benchmark)}>
                       <Icon
                         as={
@@ -114,7 +122,6 @@ export const Results = () => {
                       />
                       {calculateScoreDiff(element.score, element.benchmark)} %
                     </Tag>
-                    <Text fontSize="xs">{element.benchmark} %</Text>
                   </Flex>
                 </Td>
               </Tr>
