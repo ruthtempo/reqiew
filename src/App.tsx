@@ -1,6 +1,6 @@
 import { Box, Container, Flex, Heading } from "@chakra-ui/react";
 import { Filters } from "./Filters";
-import { Menu } from "./Menu";
+import { MenuNav } from "./Menu";
 import { Results } from "./Results";
 import { ReviewsCard } from "./ReviewsCard";
 import { VersionCard } from "./VersionCard";
@@ -8,7 +8,7 @@ import { VersionCard } from "./VersionCard";
 function App() {
   return (
     <Container h="100vh">
-      <Menu />
+      <MenuNav />
       <Filters />
       <Heading>Aspect-based Sentiment:BBQ</Heading>
       <Flex gap={3}>
