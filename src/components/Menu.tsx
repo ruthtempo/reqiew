@@ -31,6 +31,7 @@ export const MenuNav = () => {
         onClick={onOpen}
         mt={3}
         iconSpacing={3}
+        borderRadius="full"
         leftIcon={<IoMenuOutline />}
         fontSize={30}
       >
