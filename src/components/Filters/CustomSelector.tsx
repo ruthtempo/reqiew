@@ -12,20 +12,18 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 
-const devices = ["desktop", "mobile", "all devices"];
+export const CustomSelector = (p: { buttonText: string; data: string[] }) => {
+  const [selectedElements, setSelectedElements] = useState<string[]>([]);
 
-export const DeviceType = () => {
-  const [selectedDevices, setSelectedDevices] = useState<string[]>([]);
-
-  const toggleSelect = (device: string) => {
+  const toggleSelect = (element: string) => {
     let updatedSelection: string[] = [];
-    if (!selectedDevices.includes(device)) {
-      updatedSelection = selectedDevices.concat(device);
+    if (!selectedElements.includes(element)) {
+      updatedSelection = selectedElements.concat(element);
     } else {
-      updatedSelection = selectedDevices.filter((d) => d !== device);
+      updatedSelection = selectedElements.filter((el) => el !== element);
     }
 
-    setSelectedDevices(updatedSelection);
+    setSelectedElements(updatedSelection);
   };
 
   return (
@@ -34,26 +32,28 @@ export const DeviceType = () => {
         <Button
           flexGrow={1}
           rightIcon={<ChevronDownIcon />}
-          colorScheme={selectedDevices.length ? "teal" : "gray"}
+          colorScheme={selectedElements.length ? "teal" : "gray"}
         >
-          Device Type
+          {p.buttonText}
         </Button>
       </PopoverTrigger>
-      <PopoverContent w="100%">
+      <PopoverContent>
         <PopoverArrow />
-        <PopoverBody>
+        <PopoverBody w="100%">
           <Stack>
-            {devices.map((device) => (
+            {p.data.map((device) => (
               <Tag
                 key={device}
                 size="lg"
-                colorScheme={selectedDevices.includes(device) ? "teal" : "gray"}
+                colorScheme={
+                  selectedElements.includes(device) ? "teal" : "gray"
+                }
                 borderRadius="full"
                 cursor="pointer"
                 onClick={() => toggleSelect(device)}
               >
+                {selectedElements.includes(device) && <CheckIcon mr={3} />}
                 <TagLabel>{device}</TagLabel>
-                {selectedDevices.includes(device) && <CheckIcon ml={2} />}
               </Tag>
             ))}
           </Stack>
