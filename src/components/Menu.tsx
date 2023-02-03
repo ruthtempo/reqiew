@@ -44,7 +44,6 @@ export const MenuNav = () => {
         ReQiew
       </Button>
       <Drawer
-        colorScheme="black"
         isOpen={isOpen}
         placement="left"
         size="xs"
@@ -53,7 +52,7 @@ export const MenuNav = () => {
       >
         <DrawerOverlay />
         <DrawerContent bg={"black"}>
-          <DrawerCloseButton />
+          <DrawerCloseButton color="white" />
           <DrawerHeader color={"white"} fontSize={50}>
             ReQiew
           </DrawerHeader>
