@@ -1,8 +1,7 @@
-import { Box, Flex, Progress, Text } from "@chakra-ui/react";
+import { Flex, Progress, Text } from "@chakra-ui/react";
 
 export const RatingBar = (p: {
   value: number;
-  key: number;
   max: number;
   star: number;
   reviews: number;
@@ -17,7 +16,6 @@ export const RatingBar = (p: {
         value={p.value}
         max={p.max}
         m={4}
-        key={p.key}
         borderRadius="sm"
       />
       <Text fontSize="xs">{p.reviews}</Text>

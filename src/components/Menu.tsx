@@ -7,7 +7,6 @@ import {
   DrawerHeader,
   DrawerOverlay,
   List,
-  ListIcon,
   ListItem,
   Stack,
   useDisclosure,
@@ -63,7 +62,7 @@ export const MenuNav = () => {
           >
             <List spacing={10}>
               {menuElements.map((title) => (
-                <ListItem>
+                <ListItem key={title}>
                   <Button
                     leftIcon={<MdSpeed size={20} />}
                     variant="ghost"
