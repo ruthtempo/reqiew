@@ -56,7 +56,10 @@ export const DateRange = () => {
             value={[value1, value2]} //diference in days to minimum
             min={0}
             max={maxRange}
-            onChange={(val) => setMin(add(start, { days: val[0] }))} //adds difference in dates to start date to get new date
+            onChange={(val) => {
+              setMin(add(start, { days: val[0] }));
+              setMax(add(start, { days: val[1] }));
+            }} //adds difference in dates to start date to get new dates
           >
             <RangeSliderTrack>
               <RangeSliderFilledTrack />
