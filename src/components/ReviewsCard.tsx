@@ -5,7 +5,6 @@ import {
   Flex,
   Heading,
   Progress,
-  Stack,
   Tag,
   Text,
 } from "@chakra-ui/react";
@@ -23,7 +22,7 @@ const totalRev = 5480;
 
 export const ReviewsCard = () => {
   return (
-    <Card>
+    <Card bg={"gray.100"} variant="filled" borderRadius="2xl">
       <CardHeader>
         <Heading size="md">Reliable Reviews</Heading>
         <Text pt="2" fontSize="sm">
@@ -32,13 +31,22 @@ export const ReviewsCard = () => {
       </CardHeader>
       <CardBody>
         <Flex>
-          <Tag fontSize="xs">4.5/5</Tag>
+          <Tag fontSize="xs" variant="outline" borderRadius="full">
+            4.5/5
+          </Tag>
           <StarRating />
           <Text fontSize="xs">{totalRev} Reviews</Text>
         </Flex>
 
         {ratingsProStar.map((rating) => (
-          <Progress value={rating.reviews} max={5480} m={4} />
+          <Progress
+            colorScheme="yellow"
+            value={rating.reviews}
+            max={5480}
+            m={4}
+            key={rating.stars}
+            borderRadius="sm"
+          />
         ))}
       </CardBody>
     </Card>

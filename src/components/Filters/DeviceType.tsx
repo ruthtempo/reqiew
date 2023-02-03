@@ -31,7 +31,13 @@ export const DeviceType = () => {
   return (
     <Popover>
       <PopoverTrigger>
-        <Button rightIcon={<ChevronDownIcon />}>Device Type</Button>
+        <Button
+          flexGrow={1}
+          rightIcon={<ChevronDownIcon />}
+          colorScheme={selectedDevices.length ? "teal" : "gray"}
+        >
+          Device Type
+        </Button>
       </PopoverTrigger>
       <PopoverContent w="100%">
         <PopoverArrow />
@@ -39,6 +45,7 @@ export const DeviceType = () => {
           <Stack>
             {devices.map((device) => (
               <Tag
+                key={device}
                 size="lg"
                 colorScheme={selectedDevices.includes(device) ? "teal" : "gray"}
                 borderRadius="full"

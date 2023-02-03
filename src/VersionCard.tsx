@@ -11,7 +11,7 @@ import { IoDiamond } from "react-icons/io5";
 
 export const VersionCard = () => {
   return (
-    <Card variant="filled">
+    <Card variant="filled" bg={"blue.100"} borderRadius="2xl">
       <CardHeader>
         <Heading size="md">Pro version ON</Heading>
         <Text pt="2" fontSize="sm">

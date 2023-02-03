@@ -41,7 +41,7 @@ const assignProgressColor = (score: number) => {
   if (score < 20) {
     return "red";
   } else if (score < 50) {
-    return "yellow";
+    return "orange";
   } else if (score < 70) {
     return "purple";
   } else {
@@ -81,7 +81,7 @@ export const Results = () => {
   };
 
   return (
-    <Card>
+    <Card flexGrow={1} borderRadius="2xl">
       <TableContainer>
         <Table variant="simple">
           <Thead>
@@ -99,7 +99,7 @@ export const Results = () => {
           </Thead>
           <Tbody>
             {aspectRating.map((element) => (
-              <Tr>
+              <Tr key={element.aspect}>
                 <Td>{element.aspect}</Td>
                 <Td>
                   <Progress
@@ -112,7 +112,11 @@ export const Results = () => {
                 <Td>
                   <Flex alignItems={"center"} gap={2}>
                     <Text fontSize="xs">{element.benchmark} %</Text>
-                    <Tag colorScheme={assignProgressColor(element.benchmark)}>
+                    <Tag
+                      colorScheme={
+                        element.benchmark < element.score ? "green" : "red"
+                      }
+                    >
                       <Icon
                         as={
                           element.benchmark < element.score

@@ -7,10 +7,12 @@ import { VersionCard } from "./VersionCard";
 
 function App() {
   return (
-    <Container h="100vh">
+    <Container h="100vh" maxW="5xl">
       <MenuNav />
       <Filters />
-      <Heading>Aspect-based Sentiment:BBQ</Heading>
+      <Heading as="h2" size="lg" textAlign="center" py={3}>
+        Aspect-based Sentiment:BBQ
+      </Heading>
       <Flex gap={3}>
         <Box display="flex" flexDirection="column" gap={4}>
           <ReviewsCard />

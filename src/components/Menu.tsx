@@ -4,12 +4,12 @@ import {
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   List,
   ListIcon,
   ListItem,
+  Stack,
   useDisclosure,
 } from "@chakra-ui/react";
 import { IoMenuOutline } from "react-icons/io5";
@@ -25,16 +25,19 @@ export const MenuNav = () => {
     <>
       <Button
         ref={btnRef}
-        colorScheme="teal"
+        bg={"blackAlpha.800"}
+        color="white"
+        _hover={{ color: "black", bg: "white" }}
         onClick={onOpen}
-        my="4"
+        mt={3}
         iconSpacing={3}
         leftIcon={<IoMenuOutline />}
+        fontSize={30}
       >
-        Reqiew
+        ReQiew
       </Button>
       <Drawer
-        colorScheme="blackAlpha"
+        colorScheme="black"
         isOpen={isOpen}
         placement="left"
         size="xs"
@@ -42,38 +45,44 @@ export const MenuNav = () => {
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent bg={"black"}>
           <DrawerCloseButton />
-          <DrawerHeader>Reqiew</DrawerHeader>
-
-          <DrawerBody>
-            <List spacing={3}>
-              <ListItem>
-                <ListIcon as={MdSpeed} color="green.500" />
+          <DrawerHeader color={"white"} fontSize={50}>
+            ReQiew
+          </DrawerHeader>
+          <DrawerBody
+            display={"flex"}
+            flexDirection={"column"}
+            justifyContent={"space-around"}
+          >
+            <List spacing={10}>
+              <ListItem color={"white"} fontSize={20}>
+                <ListIcon as={MdSpeed} boxSize={8} />
                 Aspect Scores
               </ListItem>
               <ListItem>
-                <ListIcon as={MdSpeed} color="green.500" />
+                <ListIcon as={MdSpeed} color="white" boxSize={8} />
                 Benchmark
               </ListItem>
               <ListItem>
-                <ListIcon as={MdSpeed} color="green.500" />
+                <ListIcon as={MdSpeed} color="white" boxSize={8} />
                 Time series
               </ListItem>
               <ListItem>
-                <ListIcon as={MdSpeed} color="green.500" />
+                <ListIcon as={MdSpeed} color="white" boxSize={8} />
                 Driver analysis
               </ListItem>
               <ListItem>
-                <ListIcon as={MdSpeed} color="green.500" />
+                <ListIcon as={MdSpeed} color="white" boxSize={8} />
                 Aspect details
               </ListItem>
             </List>
-          </DrawerBody>
 
-          <DrawerFooter>
-            <Button colorScheme="gray">Change Dashboard</Button>
-          </DrawerFooter>
+            <Stack gap={10}>
+              <Button colorScheme="gray">Change Dashboard</Button>
+              <Button colorScheme="gray">Logout</Button>
+            </Stack>
+          </DrawerBody>
         </DrawerContent>
       </Drawer>
     </>
