@@ -20,7 +20,13 @@ import React from "react";
 export const MenuNav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef() as React.MutableRefObject<HTMLButtonElement>;
-
+  const menuElements = [
+    "Aspect Scores",
+    "Benchmark",
+    "Time series",
+    "Driver analysis",
+    "Aspect details",
+  ];
   return (
     <>
       <Button
@@ -57,31 +63,24 @@ export const MenuNav = () => {
             justifyContent={"space-around"}
           >
             <List spacing={10}>
-              <ListItem color={"white"} fontSize={20}>
-                <ListIcon as={MdSpeed} boxSize={8} />
-                Aspect Scores
-              </ListItem>
-              <ListItem>
-                <ListIcon as={MdSpeed} color="white" boxSize={8} />
-                Benchmark
-              </ListItem>
-              <ListItem>
-                <ListIcon as={MdSpeed} color="white" boxSize={8} />
-                Time series
-              </ListItem>
-              <ListItem>
-                <ListIcon as={MdSpeed} color="white" boxSize={8} />
-                Driver analysis
-              </ListItem>
-              <ListItem>
-                <ListIcon as={MdSpeed} color="white" boxSize={8} />
-                Aspect details
-              </ListItem>
+              {menuElements.map((title) => (
+                <ListItem>
+                  <Button
+                    leftIcon={<MdSpeed size={20} />}
+                    variant="ghost"
+                    color="white"
+                    borderRadius="full"
+                    _hover={{ color: "black", bg: "white" }}
+                  >
+                    {title}
+                  </Button>
+                </ListItem>
+              ))}
             </List>
 
             <Stack gap={10}>
-              <Button colorScheme="gray">Change Dashboard</Button>
-              <Button colorScheme="gray">Logout</Button>
+              <Button borderRadius="full">Change Dashboard</Button>
+              <Button borderRadius="full">Logout</Button>
             </Stack>
           </DrawerBody>
         </DrawerContent>
