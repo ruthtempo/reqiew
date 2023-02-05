@@ -10,15 +10,15 @@ export const RatingBar = (p: {
     <Flex alignItems={"center"}>
       <Text fontSize="xs">{p.star}/5</Text>
       <Progress
-        flexGrow={1}
-        bg={"gray.100"}
+        flexBasis="60%"
+        bg={"gray.300"}
         colorScheme={"teal"}
         value={p.value}
         max={p.max}
         m={4}
         borderRadius="sm"
       />
-      <Text fontSize="xs">{p.reviews}</Text>
+      <Text fontSize="xs">{p.reviews} reviews</Text>
     </Flex>
   );
 };
