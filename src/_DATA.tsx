@@ -31,7 +31,7 @@ export const productData: Entity[] = [
     model: "iPhone 12 Pro Max",
     price: 1099,
     date: "2020-10-13",
-    rating: [4230, 1321, 880, 550, 220],
+    rating: [2230, 4321, 880, 350, 720],
     aspects: {
       quality: 98,
       safety: 90,
@@ -47,7 +47,7 @@ export const productData: Entity[] = [
     model: "XPS 13",
     price: 1199,
     date: "2021-01-05",
-    rating: [3200, 1450, 990, 600, 280],
+    rating: [3200, 1450, 390, 600, 580],
     aspects: {
       quality: 96,
       safety: 92,
@@ -63,7 +63,7 @@ export const productData: Entity[] = [
     model: "Galaxy Tab S7",
     price: 799,
     date: "2021-08-01",
-    rating: [3900, 1500, 890, 550, 200],
+    rating: [6900, 1500, 690, 550, 700],
     aspects: {
       quality: 97,
       safety: 91,
@@ -79,7 +79,7 @@ export const productData: Entity[] = [
     model: "Versa 3",
     price: 229,
     date: "2021-09-15",
-    rating: [3300, 1300, 970, 590, 210],
+    rating: [3300, 2300, 670, 890, 210],
     aspects: {
       quality: 75,
       safety: 89,
@@ -95,7 +95,7 @@ export const productData: Entity[] = [
     model: "Powerbeats Pro",
     price: 249,
     date: "2019-04-30",
-    rating: [3500, 1250, 900, 550, 250],
+    rating: [3500, 950, 1290, 250, 550],
     aspects: {
       quality: 96,
       safety: 90,
@@ -111,7 +111,7 @@ export const productData: Entity[] = [
     model: "Charge 5",
     price: 149,
     date: "2020-07-20",
-    rating: [3100, 1300, 920, 580, 270],
+    rating: [4100, 1300, 1920, 980, 670],
     aspects: {
       quality: 94,
       safety: 89,
