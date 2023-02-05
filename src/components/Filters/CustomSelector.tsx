@@ -10,20 +10,22 @@ import {
   Tag,
   TagLabel,
 } from "@chakra-ui/react";
-import { useState } from "react";
 
-export const CustomSelector = (p: { buttonText: string; data: string[] }) => {
-  const [selectedElements, setSelectedElements] = useState<string[]>([]);
-
+export const CustomSelector = (p: {
+  buttonText: string;
+  data: string[];
+  selectedElements: string[];
+  onChange: (selection: string[]) => void;
+}) => {
   const toggleSelect = (element: string) => {
     let updatedSelection: string[] = [];
-    if (!selectedElements.includes(element)) {
-      updatedSelection = selectedElements.concat(element);
+    if (!p.selectedElements.includes(element)) {
+      updatedSelection = p.selectedElements.concat(element);
     } else {
-      updatedSelection = selectedElements.filter((el) => el !== element);
+      updatedSelection = p.selectedElements.filter((el) => el !== element);
     }
 
-    setSelectedElements(updatedSelection);
+    p.onChange(updatedSelection);
   };
 
   return (
@@ -32,7 +34,7 @@ export const CustomSelector = (p: { buttonText: string; data: string[] }) => {
         <Button
           flexGrow={1}
           rightIcon={<ChevronDownIcon />}
-          colorScheme={selectedElements.length ? "teal" : "gray"}
+          colorScheme={p.selectedElements.length ? "teal" : "gray"}
         >
           {p.buttonText}
         </Button>
@@ -41,18 +43,18 @@ export const CustomSelector = (p: { buttonText: string; data: string[] }) => {
         <PopoverArrow />
         <PopoverBody w="100%">
           <Stack>
-            {p.data.map((device) => (
+            {p.data.map((device, i) => (
               <Tag
-                key={device}
+                key={i}
                 size="lg"
                 colorScheme={
-                  selectedElements.includes(device) ? "teal" : "gray"
+                  p.selectedElements.includes(device) ? "teal" : "gray"
                 }
                 borderRadius="full"
                 cursor="pointer"
                 onClick={() => toggleSelect(device)}
               >
-                {selectedElements.includes(device) && <CheckIcon mr={3} />}
+                {p.selectedElements.includes(device) && <CheckIcon mr={3} />}
                 <TagLabel>{device}</TagLabel>
               </Tag>
             ))}
