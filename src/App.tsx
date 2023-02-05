@@ -52,7 +52,7 @@ function App() {
         priceRangeSelection={priceRangeSelection}
         setPriceRangeSelection={setpriceRangeSelection}
       />
-      <Heading as="h2" size="lg" textAlign="center" py={3}>
+      <Heading as="h2" size="md" textAlign="center" py={3}>
         Aspect-based Sentiment:BBQ
       </Heading>
       <Flex gap={3}>

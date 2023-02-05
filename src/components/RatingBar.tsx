@@ -10,7 +10,7 @@ export const RatingBar = (p: {
     <Flex alignItems={"center"}>
       <Text fontSize="xs">{p.star}/5</Text>
       <Progress
-        flexGrow={1}
+        w="40%"
         bg={"gray.300"}
         colorScheme={"teal"}
         value={p.value}

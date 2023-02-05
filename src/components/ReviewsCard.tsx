@@ -15,15 +15,18 @@ import { RatingBar } from "./RatingBar";
 export const ReviewsCard = (p: { productData: Entity[] }) => {
   const totalRatingProStar = p.productData
     .map((data) => data.rating)
-    .reduce((acc, curr) => {
-      return [
-        acc[0] + curr[0],
-        acc[1] + curr[1],
-        acc[2] + curr[2],
-        acc[3] + curr[3],
-        acc[4] + curr[4],
-      ];
-    });
+    .reduce(
+      (acc, curr) => {
+        return [
+          acc[0] + curr[0],
+          acc[1] + curr[1],
+          acc[2] + curr[2],
+          acc[3] + curr[3],
+          acc[4] + curr[4],
+        ];
+      },
+      [0, 0, 0, 0, 0]
+    );
 
   const totalReviewSum = totalRatingProStar.reduce((acc, curr) => acc + curr);
 
@@ -43,7 +46,7 @@ export const ReviewsCard = (p: { productData: Entity[] }) => {
         <Flex justifyContent="space-around" gap={4}>
           <Tag variant="outline" borderRadius="full" alignItems="center">
             <Icon as={MdStarRate} boxSize={15} color="teal" mr={2} />
-            {starAverage.toFixed(1)}/5
+            {starAverage ? starAverage.toFixed(1) : 0}/5
           </Tag>
           <Tag variant="solid" borderRadius="full" bg="teal">
             <Text>Total Reviews {totalReviewSum}</Text>

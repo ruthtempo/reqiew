@@ -1,8 +1,9 @@
 import { ArrowDownIcon, ArrowUpIcon } from "@chakra-ui/icons";
+import notfound from "../notfound.png";
 
 import {
   Card,
-  Center,
+  CardBody,
   Flex,
   Icon,
   Progress,
@@ -15,6 +16,8 @@ import {
   Th,
   Thead,
   Tr,
+  Image,
+  Heading,
 } from "@chakra-ui/react";
 import { benchmarks, Entity } from "../_DATA";
 
@@ -55,7 +58,14 @@ export const Results = (p: { productData: Entity[] }) => {
     }
   );
 
-  return (
+  return !p.productData.length ? (
+    <Card>
+      <CardBody display="flex" flexDirection="column" textAlign="center">
+        <Heading py="3">No Matches found</Heading>
+        <Image src={notfound} alt="woman with empty folder" borderRadius="lg" />
+      </CardBody>
+    </Card>
+  ) : (
     <Card flexGrow={1} borderRadius="2xl">
       <TableContainer>
         <Table variant="simple">
