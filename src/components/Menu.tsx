@@ -15,17 +15,13 @@ import { IoMenuOutline } from "react-icons/io5";
 import { MdSpeed } from "react-icons/md";
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const MenuNav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef() as React.MutableRefObject<HTMLButtonElement>;
-  const menuElements = [
-    "Aspect Scores",
-    "Benchmark",
-    "Time series",
-    "Driver analysis",
-    "Aspect details",
-  ];
+  const menuElements = ["Time series", "Driver analysis", "Aspect details"];
+
   return (
     <>
       <Button
@@ -61,6 +57,32 @@ export const MenuNav = () => {
             justifyContent={"space-around"}
           >
             <List spacing={10}>
+              <ListItem>
+                <Button
+                  as={Link}
+                  to="/"
+                  leftIcon={<MdSpeed size={20} />}
+                  variant="ghost"
+                  color="white"
+                  borderRadius="full"
+                  _hover={{ color: "black", bg: "white" }}
+                >
+                  Aspect Scores
+                </Button>
+              </ListItem>
+              <ListItem>
+                <Button
+                  as={Link}
+                  to="/benchmark"
+                  leftIcon={<MdSpeed size={20} />}
+                  variant="ghost"
+                  color="white"
+                  borderRadius="full"
+                  _hover={{ color: "black", bg: "white" }}
+                >
+                  Benchmark
+                </Button>
+              </ListItem>
               {menuElements.map((title) => (
                 <ListItem key={title}>
                   <Button
@@ -75,7 +97,6 @@ export const MenuNav = () => {
                 </ListItem>
               ))}
             </List>
-
             <Stack gap={10}>
               <Button borderRadius="full">Change Dashboard</Button>
               <Button borderRadius="full">Logout</Button>

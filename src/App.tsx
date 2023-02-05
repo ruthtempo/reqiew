@@ -37,8 +37,7 @@ function App() {
   );
 
   return (
-    <Container h="100vh" maxW="5xl">
-      <MenuNav />
+    <>
       <Filters
         productData={productData}
         selectedDevices={selectedDevices}
@@ -64,7 +63,7 @@ function App() {
           <Results productData={filteredEntities} />
         </Box>
       </Flex>
-    </Container>
+    </>
   );
 }
 
