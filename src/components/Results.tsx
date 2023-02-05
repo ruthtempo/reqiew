@@ -1,12 +1,9 @@
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  TriangleDownIcon,
-  TriangleUpIcon,
-} from "@chakra-ui/icons";
+import { ArrowDownIcon, ArrowUpIcon } from "@chakra-ui/icons";
 
 import {
   Card,
+  Center,
+  Flex,
   Icon,
   Progress,
   Table,
@@ -14,28 +11,12 @@ import {
   Tag,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
-  Text,
-  Flex,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-
-interface Aspect {
-  aspect: string;
-  score: number;
-  benchmark: number;
-}
-
-const sentimentRating: Aspect[] = [
-  { aspect: "Quality", score: 90, benchmark: 85 },
-  { aspect: "Design", score: 93, benchmark: 87 },
-  { aspect: "Cleaning", score: 61, benchmark: 55 },
-  { aspect: "Safety", score: 72, benchmark: 68 },
-  { aspect: "Service", score: 64, benchmark: 70 },
-  { aspect: "Food Taste", score: 87, benchmark: 90 },
-];
+import { benchmarks, Entity } from "../_DATA";
 
 const assignProgressColor = (score: number) => {
   if (score < 20) {
@@ -54,31 +35,25 @@ const calculateScoreDiff = (score: number, benchmark: number) => {
   return result.toFixed(1);
 };
 
-type Sorted = { sorted: string; reversed: boolean };
-
-export const Results = () => {
-  const [aspectRating, setAspectRating] = useState(
-    sentimentRating.sort((a, b) => b.score - a.score)
+export const Results = (p: { productData: Entity[] }) => {
+  const aspectsAverage = p.productData.reduce(
+    (acc, curr) => ({
+      quality: acc.quality + curr.aspects.quality / p.productData.length,
+      safety: acc.safety + curr.aspects.safety / p.productData.length,
+      design: acc.design + curr.aspects.design / p.productData.length,
+      service: acc.service + curr.aspects.service / p.productData.length,
+      cleaning: acc.cleaning + curr.aspects.cleaning / p.productData.length,
+      foodTaste: acc.foodTaste + curr.aspects.foodTaste / p.productData.length,
+    }),
+    {
+      quality: 0,
+      safety: 0,
+      design: 0,
+      service: 0,
+      cleaning: 0,
+      foodTaste: 0,
+    }
   );
-
-  const [sortedBy, setSortedBy] = useState<Sorted>({
-    sorted: "score",
-    reversed: false,
-  });
-
-  const sortByScore = () => {
-    setSortedBy({ sorted: "score", reversed: !sortedBy.reversed });
-    const aspectRatingCopy = [...aspectRating];
-
-    aspectRatingCopy.sort((aspectA, aspectB) => {
-      if (sortedBy.reversed) {
-        return aspectA.score - aspectB.score;
-      }
-      return aspectB.score - aspectA.score;
-    });
-
-    setAspectRating(aspectRatingCopy);
-  };
 
   return (
     <Card flexGrow={1} borderRadius="2xl">
@@ -87,46 +62,55 @@ export const Results = () => {
           <Thead>
             <Tr>
               <Th>Sentiment</Th>
-              <Th cursor={"pointer"}>
-                Score
-                <Icon
-                  as={sortedBy.reversed ? TriangleDownIcon : TriangleUpIcon}
-                  onClick={sortByScore}
-                />
-              </Th>
-              <Th>Benchmark</Th>
+              <Th w="30%">Score</Th>
+              <Th w="20%">Benchmark</Th>
+              <Th>Difference</Th>
             </Tr>
           </Thead>
           <Tbody>
-            {aspectRating.map((element) => (
-              <Tr key={element.aspect}>
-                <Td>{element.aspect}</Td>
+            {(
+              Object.keys(aspectsAverage) as (keyof typeof aspectsAverage)[]
+            ).map((aspect) => (
+              <Tr key={aspect}>
+                <Td>{aspect}</Td>
                 <Td>
-                  <Progress
-                    colorScheme={assignProgressColor(element.score)}
-                    size="sm"
-                    value={element.score}
-                  />
-                  {element.score} %
+                  <Flex alignItems="center">
+                    <Text mr={3} fontSize="sm">
+                      {aspectsAverage[aspect].toFixed()} %
+                    </Text>
+                    <Progress
+                      flexGrow={1}
+                      colorScheme={assignProgressColor(aspectsAverage[aspect])}
+                      bg="gray.200"
+                      size="sm"
+                      value={aspectsAverage[aspect]}
+                    />
+                  </Flex>
                 </Td>
                 <Td>
-                  <Flex alignItems={"center"} gap={2}>
-                    <Text fontSize="xs">{element.benchmark} %</Text>
-                    <Tag
-                      colorScheme={
-                        element.benchmark < element.score ? "green" : "red"
+                  <Text fontSize="sm">{benchmarks[aspect]} %</Text>
+                </Td>
+                <Td>
+                  <Tag
+                    colorScheme={
+                      benchmarks[aspect] < aspectsAverage[aspect]
+                        ? "green"
+                        : "red"
+                    }
+                  >
+                    <Icon
+                      as={
+                        benchmarks[aspect] < aspectsAverage[aspect]
+                          ? ArrowUpIcon
+                          : ArrowDownIcon
                       }
-                    >
-                      <Icon
-                        as={
-                          element.benchmark < element.score
-                            ? ArrowUpIcon
-                            : ArrowDownIcon
-                        }
-                      />
-                      {calculateScoreDiff(element.score, element.benchmark)} %
-                    </Tag>
-                  </Flex>
+                    />
+                    {calculateScoreDiff(
+                      aspectsAverage[aspect],
+                      benchmarks[aspect]
+                    )}
+                    %
+                  </Tag>
                 </Td>
               </Tr>
             ))}

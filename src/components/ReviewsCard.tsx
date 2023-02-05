@@ -4,48 +4,58 @@ import {
   CardHeader,
   Flex,
   Heading,
-  Progress,
+  Icon,
   Tag,
   Text,
 } from "@chakra-ui/react";
-import { StarRating } from "./StarRating";
+import { MdStarRate } from "react-icons/md";
+import { Entity } from "../_DATA";
+import { RatingBar } from "./RatingBar";
 
-const ratingsProStar = [
-  { stars: 5, reviews: 4135 },
-  { stars: 4, reviews: 636 },
-  { stars: 3, reviews: 729 },
-  { stars: 2, reviews: 320 },
-  { stars: 1, reviews: 281 },
-];
+export const ReviewsCard = (p: { productData: Entity[] }) => {
+  const totalRatingProStar = p.productData
+    .map((data) => data.rating)
+    .reduce((acc, curr) => {
+      return [
+        acc[0] + curr[0],
+        acc[1] + curr[1],
+        acc[2] + curr[2],
+        acc[3] + curr[3],
+        acc[4] + curr[4],
+      ];
+    });
 
-const totalRev = 5480;
+  const totalReviewSum = totalRatingProStar.reduce((acc, curr) => acc + curr);
 
-export const ReviewsCard = () => {
+  const starAverage = totalRatingProStar.reduce(
+    (acc, curr, i) => acc + (5 - i) * (curr / totalReviewSum),
+    0
+  );
+  console.log(starAverage);
+
   return (
     <Card bg={"gray.100"} variant="filled" borderRadius="2xl">
       <CardHeader>
         <Heading size="md">Reliable Reviews</Heading>
-        <Text pt="2" fontSize="sm">
-          Anti-spam filtered reviews
-        </Text>
+        <Text pt="2">Anti-spam filtered reviews</Text>
       </CardHeader>
       <CardBody>
-        <Flex>
-          <Tag fontSize="xs" variant="outline" borderRadius="full">
-            4.5/5
+        <Flex justifyContent="space-around" gap={4}>
+          <Tag variant="outline" borderRadius="full" alignItems="center">
+            <Icon as={MdStarRate} boxSize={15} color="teal" mr={2} />
+            {starAverage.toFixed(1)}/5
           </Tag>
-          <StarRating />
-          <Text fontSize="xs">{totalRev} Reviews</Text>
+          <Tag variant="solid" borderRadius="full" bg="teal">
+            <Text>Total Reviews {totalReviewSum}</Text>
+          </Tag>
         </Flex>
-
-        {ratingsProStar.map((rating) => (
-          <Progress
-            colorScheme="yellow"
-            value={rating.reviews}
-            max={5480}
-            m={4}
-            key={rating.stars}
-            borderRadius="sm"
+        {totalRatingProStar.map((rating, i) => (
+          <RatingBar
+            star={5 - i}
+            reviews={rating}
+            value={rating}
+            max={totalReviewSum}
+            key={i}
           />
         ))}
       </CardBody>
