@@ -60,7 +60,9 @@ function App() {
           <ReviewsCard productData={filteredEntities} />
           <VersionCard />
         </Box>
-        <Results productData={filteredEntities} />
+        <Box flexGrow={1}>
+          <Results productData={filteredEntities} />
+        </Box>
       </Flex>
     </Container>
   );

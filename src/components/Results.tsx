@@ -63,7 +63,7 @@ export const Results = (p: { productData: Entity[] }) => {
             <Tr>
               <Th>Sentiment</Th>
               <Th w="30%">Score</Th>
-              <Th w="20%">Benchmark</Th>
+              <Th>Benchmark</Th>
               <Th>Difference</Th>
             </Tr>
           </Thead>
