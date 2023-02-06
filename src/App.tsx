@@ -1,7 +1,6 @@
-import { Box, Container, Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import { useState } from "react";
 import { Filters } from "./components/FilterOptions";
-import { MenuNav } from "./components/Menu";
 import { Results } from "./components/Results";
 import { ReviewsCard } from "./components/ReviewsCard";
 import { VersionCard } from "./VersionCard";
@@ -56,7 +55,14 @@ function App() {
       </Heading>
       <Flex gap={3}>
         <Box display="flex" flexDirection="column" gap={4}>
-          <ReviewsCard productData={filteredEntities} />
+          <ReviewsCard
+            productData={filteredEntities}
+            title="Reliable Reviews"
+            subtitle={"Anti-spam filtered reviews"}
+            barColor="teal"
+            tagBg="teal"
+            starColor="teal"
+          />
           <VersionCard />
         </Box>
         <Box flexGrow={1}>
