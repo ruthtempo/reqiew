@@ -18,6 +18,8 @@ import {
   Tr,
   Image,
   Heading,
+  Tfoot,
+  TableCaption,
 } from "@chakra-ui/react";
 import { benchmarks, Entity } from "../_DATA";
 
@@ -69,6 +71,9 @@ export const Results = (p: { productData: Entity[] }) => {
     <Card flexGrow={1} borderRadius="2xl" h="100%">
       <TableContainer>
         <Table variant="simple">
+          <TableCaption>
+            Aspect-based Sentiment values out of 100%{" "}
+          </TableCaption>
           <Thead>
             <Tr>
               <Th>Sentiment</Th>
@@ -77,7 +82,7 @@ export const Results = (p: { productData: Entity[] }) => {
               <Th>Difference</Th>
             </Tr>
           </Thead>
-          <Tbody h="full">
+          <Tbody>
             {(
               Object.keys(aspectsAverage) as (keyof typeof aspectsAverage)[]
             ).map((aspect) => (
@@ -125,6 +130,14 @@ export const Results = (p: { productData: Entity[] }) => {
               </Tr>
             ))}
           </Tbody>
+          <Tfoot>
+            <Tr>
+              <Th>Sentiment</Th>
+              <Th w="30%">Score</Th>
+              <Th>Benchmark</Th>
+              <Th>Difference</Th>
+            </Tr>
+          </Tfoot>
         </Table>
       </TableContainer>
     </Card>

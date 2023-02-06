@@ -21,7 +21,12 @@ export const Benchmark = () => {
         </Button>
         <Stack>
           {Array.from({ length: 2 }).map((_, i) => (
-            <Button flexGrow={1} bg={i === 0 ? "purple" : "teal"} color="white">
+            <Button
+              flexGrow={1}
+              bg={i === 0 ? "purple" : "teal"}
+              color="white"
+              rightIcon={<ChevronDownIcon />}
+            >
               Brand
             </Button>
           ))}
@@ -110,7 +115,7 @@ export const Benchmark = () => {
           <ChartTotal entities={entities} />
         </Flex>
       </Flex>
-      <Flex>
+      <Flex mt={10}>
         <Box w="50%">
           <Chart entities={entities} />
         </Box>

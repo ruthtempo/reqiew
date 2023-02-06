@@ -54,7 +54,12 @@ function App() {
         Aspect-based Sentiment:BBQ
       </Heading>
       <Flex gap={3}>
-        <Box display="flex" flexDirection="column" gap={4}>
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap={4}
+          justifyContent="space-between"
+        >
           <ReviewsCard
             productData={filteredEntities}
             title="Reliable Reviews"

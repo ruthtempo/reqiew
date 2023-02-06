@@ -15,7 +15,7 @@ export const RatingBar = (p: {
         bg={"gray.300"}
         colorScheme={p.colorScheme}
         value={p.value}
-        max={p.max}
+        max={p.max || 1}
         m={4}
         borderRadius="sm"
       />
