@@ -66,7 +66,7 @@ export const Results = (p: { productData: Entity[] }) => {
       </CardBody>
     </Card>
   ) : (
-    <Card flexGrow={1} borderRadius="2xl">
+    <Card flexGrow={1} borderRadius="2xl" h="100%">
       <TableContainer>
         <Table variant="simple">
           <Thead>
@@ -77,7 +77,7 @@ export const Results = (p: { productData: Entity[] }) => {
               <Th>Difference</Th>
             </Tr>
           </Thead>
-          <Tbody>
+          <Tbody h="full">
             {(
               Object.keys(aspectsAverage) as (keyof typeof aspectsAverage)[]
             ).map((aspect) => (
