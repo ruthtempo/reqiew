@@ -51,7 +51,7 @@ function App() {
         setPriceRangeSelection={setpriceRangeSelection}
       />
       <Heading as="h2" size="md" textAlign="center" py={3}>
-        Aspect-based Sentiment:BBQ
+        Aspect-based Sentiment
       </Heading>
       <Flex gap={3}>
         <Box

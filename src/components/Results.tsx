@@ -72,7 +72,7 @@ export const Results = (p: { productData: Entity[] }) => {
       <TableContainer>
         <Table variant="simple">
           <TableCaption>
-            Aspect-based Sentiment values out of 100%{" "}
+            Aspect-based Sentiment values out a max score of 100%
           </TableCaption>
           <Thead>
             <Tr>
