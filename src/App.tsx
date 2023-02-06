@@ -25,14 +25,16 @@ function App() {
       (selectedModels.includes(entity.model) || selectedModels.length === 0) &&
       //date
       (dateRangeSelection[0] === undefined ||
-        new Date(entity.date) > dateRangeSelection[0]) &&
+        new Date(entity.date).toISOString() >=
+          dateRangeSelection[0].toISOString()) &&
       (dateRangeSelection[1] === undefined ||
-        new Date(entity.date) < dateRangeSelection[1]) &&
+        new Date(entity.date).toISOString() <=
+          dateRangeSelection[1].toISOString()) &&
       //price
       (priceRangeSelection[0] === undefined ||
-        priceRangeSelection[0] < entity.price) &&
+        priceRangeSelection[0] <= entity.price) &&
       (priceRangeSelection[1] === undefined ||
-        priceRangeSelection[1] > entity.price)
+        priceRangeSelection[1] >= entity.price)
   );
 
   return (
