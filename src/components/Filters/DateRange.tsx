@@ -62,7 +62,6 @@ export const DateRange = (p: {
           </Flex>
           <RangeSlider
             colorScheme="teal"
-            aria-label={["min", "max"]}
             value={[value1, value2]} //diference in days to minimum
             min={0}
             max={maxRange}

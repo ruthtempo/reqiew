@@ -1,6 +1,5 @@
 import { Button, Stack } from "@chakra-ui/react";
 import { max, min } from "date-fns/esm";
-import { useState } from "react";
 import { Entity, productData } from "../_DATA";
 import { CustomSelector } from "./Filters/CustomSelector";
 import { DateRange } from "./Filters/DateRange";
