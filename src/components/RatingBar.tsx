@@ -5,6 +5,7 @@ export const RatingBar = (p: {
   max: number;
   star: number;
   reviews: number;
+  colorScheme: string;
 }) => {
   return (
     <Flex alignItems={"center"}>
@@ -12,7 +13,7 @@ export const RatingBar = (p: {
       <Progress
         w="40%"
         bg={"gray.300"}
-        colorScheme={"teal"}
+        colorScheme={p.colorScheme}
         value={p.value}
         max={p.max}
         m={4}
