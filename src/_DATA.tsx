@@ -91,7 +91,7 @@ export const productData: Entity[] = [
   },
   {
     type: "Headphones",
-    brand: "Beats",
+    brand: "Apple",
     model: "Powerbeats Pro",
     price: 249,
     date: "2019-04-30",
@@ -107,11 +107,11 @@ export const productData: Entity[] = [
   },
   {
     type: "Speaker",
-    brand: "JBL",
+    brand: "Samsung",
     model: "Charge 5",
     price: 149,
     date: "2020-07-20",
-    rating: [4100, 1300, 1920, 980, 670],
+    rating: [3100, 1300, 1720, 980, 670],
     aspects: {
       quality: 94,
       safety: 89,
@@ -119,6 +119,22 @@ export const productData: Entity[] = [
       service: 88,
       cleaning: 83,
       foodTaste: 77,
+    },
+  },
+  {
+    type: "Speaker",
+    brand: "Sony",
+    model: "Ultra-5",
+    price: 249,
+    date: "2020-07-20",
+    rating: [2100, 980, 1420, 680, 470],
+    aspects: {
+      quality: 93,
+      safety: 85,
+      design: 71,
+      service: 68,
+      cleaning: 93,
+      foodTaste: 67,
     },
   },
 ];
