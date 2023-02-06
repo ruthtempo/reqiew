@@ -97,7 +97,7 @@ export const Results = (p: { productData: Entity[] }) => {
                       flexGrow={1}
                       colorScheme={assignProgressColor(aspectsAverage[aspect])}
                       bg="gray.200"
-                      size="sm"
+                      size="md"
                       value={aspectsAverage[aspect]}
                     />
                   </Flex>
