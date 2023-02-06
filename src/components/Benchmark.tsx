@@ -74,7 +74,7 @@ export const Benchmark = () => {
             color="white"
             py={2}
           >
-            Sony Ultra-xs
+            {entities[0].brand} {entities[0].model}
           </Heading>
           <ReviewsCard
             productData={[entities[0]]}
@@ -95,7 +95,7 @@ export const Benchmark = () => {
             color="white"
             py={2}
           >
-            Samsung Charge 5
+            {entities[1].brand} {entities[1].model}
           </Heading>
           <ReviewsCard
             productData={[entities[1]]}
