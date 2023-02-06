@@ -4,13 +4,14 @@ import { productData } from "../_DATA";
 import { ReviewsCard } from "./ReviewsCard";
 import { Chart } from "./Chart";
 import { ChartTotal } from "./ChartTotal";
+import { AspectsChart } from "./AspectsChart";
 
 export const Benchmark = () => {
   const entities = [productData[5], productData[6]];
 
   return (
     <Box>
-      <Stack spacing={2} direction="row" my="4">
+      <Stack spacing={2} direction="row" my="8">
         <Button
           flexGrow={1}
           rightIcon={<ChevronDownIcon />}
@@ -62,8 +63,7 @@ export const Benchmark = () => {
           Clear Filters
         </Button>
       </Stack>
-
-      <Flex gap={10} justifyContent="space-around" my={3}>
+      <Flex gap={5} justifyContent="space-around" my={3}>
         <Box>
           <Heading
             mb={4}
@@ -111,7 +111,12 @@ export const Benchmark = () => {
         </Flex>
       </Flex>
       <Flex>
-        <Chart entities={entities} />
+        <Box w="50%">
+          <Chart entities={entities} />
+        </Box>
+        <Box w="50%">
+          <AspectsChart entities={entities} />
+        </Box>
       </Flex>
     </Box>
   );

@@ -10,7 +10,6 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { Entity } from "../_DATA";
-import { arrayBuffer } from "stream/consumers";
 
 ChartJS.register(
   CategoryScale,
@@ -46,12 +45,12 @@ export const ChartTotal = (p: { entities: Entity[] }) => {
     labels,
     datasets: [
       {
-        label: "Sony",
+        label: p.entities[0].brand,
         data: [getTotal(p.entities[0])],
         backgroundColor: "purple",
       },
       {
-        label: "Samsung",
+        label: p.entities[1].brand,
         data: [getTotal(p.entities[1])],
         backgroundColor: "teal",
       },

@@ -28,6 +28,7 @@ export const options = {
     },
   },
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: "right" as const,
@@ -48,13 +49,13 @@ export const Chart = (p: { entities: Entity[] }) => {
     labels,
     datasets: [
       {
-        label: "Sony",
+        label: p.entities[0].brand,
         data: entityRatings[0],
         borderColor: "purple",
         backgroundColor: "purple",
       },
       {
-        label: "Samsung",
+        label: p.entities[1].brand,
         data: entityRatings[1],
         borderColor: "teal",
         backgroundColor: "teal",
