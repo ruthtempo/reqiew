@@ -26,9 +26,9 @@ export const MenuNav = () => {
     <>
       <Button
         ref={btnRef}
-        bg={"blackAlpha.800"}
+        bg={'blackAlpha.800'}
         color="white"
-        _hover={{ color: "black", bg: "white" }}
+        _hover={{ color: 'black', bg: 'white' }}
         onClick={onOpen}
         mt={3}
         iconSpacing={3}
@@ -36,7 +36,7 @@ export const MenuNav = () => {
         leftIcon={<IoMenuOutline />}
         fontSize={30}
       >
-        ReQiew
+        Review
       </Button>
       <Drawer
         isOpen={isOpen}
@@ -46,15 +46,15 @@ export const MenuNav = () => {
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
-        <DrawerContent bg={"black"}>
+        <DrawerContent bg={'black'}>
           <DrawerCloseButton color="white" />
-          <DrawerHeader color={"white"} fontSize={50}>
+          <DrawerHeader color={'white'} fontSize={50}>
             ReQiew
           </DrawerHeader>
           <DrawerBody
-            display={"flex"}
-            flexDirection={"column"}
-            justifyContent={"space-around"}
+            display={'flex'}
+            flexDirection={'column'}
+            justifyContent={'space-around'}
           >
             <List spacing={10}>
               <ListItem>
@@ -65,7 +65,7 @@ export const MenuNav = () => {
                   variant="ghost"
                   color="white"
                   borderRadius="full"
-                  _hover={{ color: "black", bg: "white" }}
+                  _hover={{ color: 'black', bg: 'white' }}
                 >
                   Aspect Scores
                 </Button>
@@ -78,7 +78,7 @@ export const MenuNav = () => {
                   variant="ghost"
                   color="white"
                   borderRadius="full"
-                  _hover={{ color: "black", bg: "white" }}
+                  _hover={{ color: 'black', bg: 'white' }}
                 >
                   Benchmark
                 </Button>
@@ -90,7 +90,7 @@ export const MenuNav = () => {
                     variant="ghost"
                     color="white"
                     borderRadius="full"
-                    _hover={{ color: "black", bg: "white" }}
+                    _hover={{ color: 'black', bg: 'white' }}
                   >
                     {title}
                   </Button>

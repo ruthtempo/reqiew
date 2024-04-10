@@ -1,4 +1,4 @@
-# Reqiew
+# Reviews
 
 - Creation of a simple prototype for the analysis of online reviews
 
