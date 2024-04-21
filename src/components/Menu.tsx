@@ -49,7 +49,7 @@ export const MenuNav = () => {
         <DrawerContent bg={'black'}>
           <DrawerCloseButton color="white" />
           <DrawerHeader color={'white'} fontSize={50}>
-            ReQiew
+            Review
           </DrawerHeader>
           <DrawerBody
             display={'flex'}
